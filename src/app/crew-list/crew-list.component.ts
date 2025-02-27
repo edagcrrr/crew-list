@@ -1,36 +1,83 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { CrewPopupComponent } from '../crew-popup/crew-popup.component';
+import { DeleteCrewPopupComponent } from '../delete-crew-popup/delete-crew-popup.component';
 
-export interface PeriodicElement {
+export interface ICrewItem {
   name: string;
+  lastName: string;
+  nationality: string;
+  title: string;
+  daysOnBoard: string;
+  dailyRate: string;
+  currency: string;
+  totalIncome: string;
   position: number;
-  weight: number;
-  symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+const ELEMENT_DATA: ICrewItem[] = [
+  {
+    position: 1,
+    name: 'Eda',
+    lastName: 'Gecer',
+    nationality: 'Türk',
+    title: 'Kaptan',
+    daysOnBoard: '3',
+    dailyRate: '150',
+    currency: 'USD',
+    totalIncome: '1800',
+  },
+  {
+    position: 2,
+    name: 'Eda2',
+    lastName: 'Gecer',
+    nationality: 'Türk',
+    title: 'Kaptan',
+    daysOnBoard: '3',
+    dailyRate: '150',
+    currency: 'USD',
+    totalIncome: '1800',
+  },
+  {
+    position: 3,
+    name: 'Eda3',
+    lastName: 'Gecer',
+    nationality: 'Türk',
+    title: 'Kaptan',
+    daysOnBoard: '3',
+    dailyRate: '150',
+    currency: 'USD',
+    totalIncome: '1800',
+  },
+  {
+    position: 4,
+    name: 'Eda4',
+    lastName: 'Gecer',
+    nationality: 'Türk',
+    title: 'Kaptan',
+    daysOnBoard: '3',
+    dailyRate: '150',
+    currency: 'USD',
+    totalIncome: '1800',
+  },
+  {
+    position: 5,
+    name: 'Eda5',
+    lastName: 'Gecer',
+    nationality: 'Türk',
+    title: 'Kaptan',
+    daysOnBoard: '3',
+    dailyRate: '150',
+    currency: 'USD',
+    totalIncome: '1800',
+  },
 ];
 
 @Component({
@@ -38,15 +85,58 @@ const ELEMENT_DATA: PeriodicElement[] = [
   standalone: true,
   templateUrl: './crew-list.component.html',
   styleUrls: ['./crew-list.component.css'],
-  imports: [MatTableModule, MatCardModule, MatPaginatorModule],
+  imports: [
+    MatButtonModule,
+    MatTableModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatDialogModule,
+  ],
 })
 export class CrewListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  constructor(private router: Router, private dialog: MatDialog) {}
+
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'lastName',
+    'nationality',
+    'title',
+    'daysOnBoard',
+    'dailyRate',
+    'currency',
+    'totalIncome',
+    'actions',
+  ];
+
+  dataSource = new MatTableDataSource<ICrewItem>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  addCrewClicked() {
+    this.dialog.open(CrewPopupComponent, {
+      data: {},
+    });
+  }
+
+  userClicked(id: number) {
+    this.router.navigate(['/crew-page'], { queryParams: { position: id } });
+  }
+
+  editClicked(crewItem: ICrewItem) {
+    this.dialog.open(CrewPopupComponent, {
+      data: crewItem,
+    });
+  }
+
+  deleteClicked(position: number) {
+    this.dialog.open(DeleteCrewPopupComponent, {
+      data: position,
+    });
   }
 }

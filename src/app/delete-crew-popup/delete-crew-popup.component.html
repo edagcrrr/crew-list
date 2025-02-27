@@ -1,0 +1,14 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title class="dialog-title">Crew Deleted</h2>
+
+  <mat-dialog-content class="dialog-content">
+    Are you sure to delete this crew?
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onClose()">Kapat</button>
+    <button mat-flat-button (click)="onSave()" class="delete-button">
+      Sil
+    </button>
+  </mat-dialog-actions>
+</div>

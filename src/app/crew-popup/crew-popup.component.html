@@ -1,0 +1,83 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title class="dialog-title">Crew Card</h2>
+
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="form">
+      <div class="input-row">
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput [formControlName]="'name'" />
+          </mat-form-field>
+        </div>
+
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput [formControlName]="'lastName'" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Nationality</mat-label>
+            <input matInput [formControlName]="'nationality'" />
+          </mat-form-field>
+        </div>
+
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Title</mat-label>
+            <input matInput [formControlName]="'title'" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Days On Board</mat-label>
+            <input matInput [formControlName]="'daysOnBoard'" />
+          </mat-form-field>
+        </div>
+
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Daily Rate</mat-label>
+            <input matInput [formControlName]="'dailyRate'" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Currency</mat-label>
+            <input matInput [formControlName]="'currency'" />
+          </mat-form-field>
+        </div>
+
+        <div class="input-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Total Income</mat-label>
+            <input matInput [formControlName]="'totalIncome'" />
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onClose()">Kapat</button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="onSave()"
+      [disabled]="form.invalid"
+    >
+      Kaydet
+    </button>
+  </mat-dialog-actions>
+</div>

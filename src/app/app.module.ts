@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CrewListComponent } from './crew-list/crew-list.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CrewPageComponent } from './crew-page/crew-page.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { CrewListComponent } from './crew-list/crew-list.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppComponent,
+    MatIconModule,
     CrewListComponent,
+    CrewPageComponent,
     RouterModule.forRoot([]),
   ]
 })
