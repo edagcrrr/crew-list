@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <h1>Create Certificate Type</h1>
+      <form [formGroup]="form" class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" [formControlName]="'name'" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Description"
+            [formControlName]="'description'"
+          />
+        </mat-form-field>
+      </form>
+      <button
+      mat-flat-button
+      color="primary"
+      (click)="onSave()"
+      [disabled]="form.invalid"
+    >
+      Kaydet
+    </button>
+    </mat-card-content>
+  </mat-card>
+</div>

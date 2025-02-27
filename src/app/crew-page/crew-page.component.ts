@@ -7,7 +7,6 @@ import {FormsModule} from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-crew-page',
   standalone: true,

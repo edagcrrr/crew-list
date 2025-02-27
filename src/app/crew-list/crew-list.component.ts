@@ -9,6 +9,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { CrewPopupComponent } from '../crew-popup/crew-popup.component';
 import { DeleteCrewPopupComponent } from '../delete-crew-popup/delete-crew-popup.component';
+import { CertificateComponentPopupComponent } from '../certificates-page-popup/certificates-page-popup.component';
+
 
 export interface ICrewItem {
   name: string;
@@ -27,8 +29,8 @@ const ELEMENT_DATA: ICrewItem[] = [
     position: 1,
     name: 'Eda',
     lastName: 'Gecer',
-    nationality: 'Türk',
-    title: 'Kaptan',
+    nationality: 'Turkish',
+    title: 'Captain',
     daysOnBoard: '3',
     dailyRate: '150',
     currency: 'USD',
@@ -38,8 +40,8 @@ const ELEMENT_DATA: ICrewItem[] = [
     position: 2,
     name: 'Eda2',
     lastName: 'Gecer',
-    nationality: 'Türk',
-    title: 'Kaptan',
+    nationality: 'Turkish',
+    title: 'Captain',
     daysOnBoard: '3',
     dailyRate: '150',
     currency: 'USD',
@@ -49,8 +51,8 @@ const ELEMENT_DATA: ICrewItem[] = [
     position: 3,
     name: 'Eda3',
     lastName: 'Gecer',
-    nationality: 'Türk',
-    title: 'Kaptan',
+    nationality: 'Turkish',
+    title: 'Captain',
     daysOnBoard: '3',
     dailyRate: '150',
     currency: 'USD',
@@ -60,8 +62,8 @@ const ELEMENT_DATA: ICrewItem[] = [
     position: 4,
     name: 'Eda4',
     lastName: 'Gecer',
-    nationality: 'Türk',
-    title: 'Kaptan',
+    nationality: 'Turkish',
+    title: 'Captain',
     daysOnBoard: '3',
     dailyRate: '150',
     currency: 'USD',
@@ -71,8 +73,8 @@ const ELEMENT_DATA: ICrewItem[] = [
     position: 5,
     name: 'Eda5',
     lastName: 'Gecer',
-    nationality: 'Türk',
-    title: 'Kaptan',
+    nationality: 'Turkish',
+    title: 'Captain',
     daysOnBoard: '3',
     dailyRate: '150',
     currency: 'USD',
@@ -112,6 +114,7 @@ export class CrewListComponent implements AfterViewInit {
 
   dataSource = new MatTableDataSource<ICrewItem>(ELEMENT_DATA);
 
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
@@ -122,6 +125,10 @@ export class CrewListComponent implements AfterViewInit {
     this.dialog.open(CrewPopupComponent, {
       data: {},
     });
+  }
+
+  createCertificateClicked() {
+    this.router.navigate(['/create-certificate-type']);
   }
 
   userClicked(id: number) {
@@ -136,6 +143,12 @@ export class CrewListComponent implements AfterViewInit {
 
   deleteClicked(position: number) {
     this.dialog.open(DeleteCrewPopupComponent, {
+      data: position,
+    });
+  }
+
+  certificatesClicked(position: number) {
+    this.dialog.open(CertificateComponentPopupComponent, {
       data: position,
     });
   }

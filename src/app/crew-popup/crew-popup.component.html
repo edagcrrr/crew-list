@@ -23,14 +23,23 @@
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Nationality</mat-label>
-            <input matInput [formControlName]="'nationality'" />
+            <mat-select [formControlName]="'nationality'">
+              <mat-option value="Turkish">Turkish</mat-option>
+              <mat-option value="Greek">Greek</mat-option>
+              <mat-option value="British">British</mat-option>
+              <mat-option value="Egyptian">Egyptian</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
 
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Title</mat-label>
-            <input matInput [formControlName]="'title'" />
+            <mat-select [formControlName]="'title'">
+              <mat-option value="Captain">Captain</mat-option>
+              <mat-option value="2. Captain">2. Captain</mat-option>
+              <mat-option value="Crew">Crew</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -55,7 +64,11 @@
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Currency</mat-label>
-            <input matInput [formControlName]="'currency'" />
+            <mat-select [formControlName]="'currency'">
+              <mat-option value="USD">Dollars</mat-option>
+              <mat-option value="TL">Turkish Liras</mat-option>
+              <mat-option value="Pound">Pound</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
 
