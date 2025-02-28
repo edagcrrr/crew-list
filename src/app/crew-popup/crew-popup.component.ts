@@ -3,14 +3,16 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
   MatDialogModule,
+  MatDialog,
 } from '@angular/material/dialog';
-import { ICrewItem } from '../crew-list/crew-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { CertificateAddPopupComponent } from '../certificate-add-popup/certificate-add-popup.component';
+import { ICrewItem } from '../types/crew-type';
 
 @Component({
   selector: 'app-crew-popup',
@@ -22,7 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
 })
 export class CrewPopupComponent {
@@ -31,7 +33,8 @@ export class CrewPopupComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
     public dialogRef: MatDialogRef<CrewPopupComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog
   ) {
     this.form = this.fb.group({
       name: [data.name || ''],
@@ -42,6 +45,7 @@ export class CrewPopupComponent {
       dailyRate: [data.dailyRate || ''],
       currency: [data.currency || ''],
       totalIncome: [data.totalIncome || ''],
+      certificates: [data.certificates || []],
     });
   }
 
@@ -50,7 +54,11 @@ export class CrewPopupComponent {
     this.dialogRef.close();
   }
 
-  onClose(): void {
+  onClose() {
     this.dialogRef.close();
+  }
+
+  onCertificatesOpen() {
+    this.dialog.open(CertificateAddPopupComponent);
   }
 }

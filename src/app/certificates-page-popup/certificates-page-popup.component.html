@@ -3,17 +3,16 @@
 
   <mat-dialog-content class="dialog-content">
     <mat-list>
-      <mat-list-item>
-        <span matListItemTitle>Certificates1</span>
-        <span matListItemLine>Captain Certificates</span>
-      </mat-list-item>
-      <mat-list-item>
-        <span matListItemTitle>Certificates2</span>
-        <span matListItemLine>Card Crew Certificates</span>
-      </mat-list-item>
-      <mat-list-item>
-        <span matListItemTitle>Certificates3</span>
-        <span matListItemLine>Crew Managment</span>
+      <mat-list-item *ngFor="let item of data">
+
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <p matListItemTitle>{{ item.certificateType.name }}</p>
+      <small matListItemLine>{{ item.certificateType.description }}</small>
+      <p matListItemTitle>{{ item.issueDate }}</p>
+      <p matListItemTitle>{{ item.expiryDate }}</p>
+    </mat-card-content>
+  </mat-card>
       </mat-list-item>
     </mat-list>
   </mat-dialog-content>

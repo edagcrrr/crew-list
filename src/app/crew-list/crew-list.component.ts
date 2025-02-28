@@ -10,19 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CrewPopupComponent } from '../crew-popup/crew-popup.component';
 import { DeleteCrewPopupComponent } from '../delete-crew-popup/delete-crew-popup.component';
 import { CertificateComponentPopupComponent } from '../certificates-page-popup/certificates-page-popup.component';
-
-
-export interface ICrewItem {
-  name: string;
-  lastName: string;
-  nationality: string;
-  title: string;
-  daysOnBoard: string;
-  dailyRate: string;
-  currency: string;
-  totalIncome: string;
-  position: number;
-}
+import { ICrewItem } from '../types/crew-type';
 
 const ELEMENT_DATA: ICrewItem[] = [
   {
@@ -35,6 +23,24 @@ const ELEMENT_DATA: ICrewItem[] = [
     dailyRate: '150',
     currency: 'USD',
     totalIncome: '1800',
+    certificates: [
+      {
+        certificateType: {
+          name: 'Deneme1',
+          description: 'DenemeDesc',
+        },
+        issueDate: '12/12/15',
+        expiryDate: '12/12/2026',
+      },
+      {
+        certificateType: {
+          name: 'Deneme2',
+          description: 'Deneme2Desc',
+        },
+        issueDate: '12/12/15',
+        expiryDate: '12/12/2026',
+      },
+    ],
   },
   {
     position: 2,
@@ -114,7 +120,6 @@ export class CrewListComponent implements AfterViewInit {
 
   dataSource = new MatTableDataSource<ICrewItem>(ELEMENT_DATA);
 
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
@@ -147,9 +152,9 @@ export class CrewListComponent implements AfterViewInit {
     });
   }
 
-  certificatesClicked(position: number) {
+  certificatesClicked(crewItem: ICrewItem) {
     this.dialog.open(CertificateComponentPopupComponent, {
-      data: position,
+      data: crewItem.certificates,
     });
   }
 }

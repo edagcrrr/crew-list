@@ -4,10 +4,10 @@ import {
   MAT_DIALOG_DATA,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { ICrewItem } from '../crew-list/crew-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ICrewItem } from '../types/crew-type';
 
 @Component({
   selector: 'app-delete-crew-popup',

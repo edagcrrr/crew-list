@@ -4,11 +4,13 @@ import {
   MAT_DIALOG_DATA,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { ICrewItem } from '../crew-list/crew-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import { ICertificateItem } from '../types/crew-type';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-certificates-page-popup',
@@ -20,11 +22,13 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    CommonModule,
+    MatCardModule
   ],
 })
 export class CertificateComponentPopupComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
+    @Inject(MAT_DIALOG_DATA) public data: ICertificateItem[],
     public dialogRef: MatDialogRef<CertificateComponentPopupComponent>
   ) {}
 

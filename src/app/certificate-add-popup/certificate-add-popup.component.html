@@ -1,28 +1,11 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title class="dialog-title">Crew Card</h2>
-
+  <h2 mat-dialog-title class="dialog-title">Certificate Add</h2>
   <mat-dialog-content class="dialog-content">
-    <form [formGroup]="form">
+    <!-- <form [formGroup]="form">
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Name</mat-label>
-            <input matInput [formControlName]="'name'" />
-          </mat-form-field>
-        </div>
-
-        <div class="input-container">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Last Name</mat-label>
-            <input matInput [formControlName]="'lastName'" />
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="input-row">
-        <div class="input-container">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Nationality</mat-label>
+            <mat-label>Certificate Type</mat-label>
             <mat-select [formControlName]="'nationality'">
               <mat-option value="Turkish">Turkish</mat-option>
               <mat-option value="Greek">Greek</mat-option>
@@ -79,18 +62,10 @@
           </mat-form-field>
         </div>
       </div>
-    </form>
+    </form> -->
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-actions">
     <button mat-raised-button (click)="onClose()">Close</button>
-    <button
-      mat-stroked-button
-      color="primary"
-      (click)="onCertificatesOpen()"
-      [disabled]="form.invalid"
-    >
-      Certificates
-    </button>
     <button
       mat-flat-button
       color="primary"
