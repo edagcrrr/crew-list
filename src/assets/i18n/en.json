@@ -1,0 +1,50 @@
+{
+  "PERSONAL_INFO": {
+    "TITLE": "Personal Information",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "NATIONALITY": "Nationality",
+    "DAYS_ON_BOARD": "Days on Board",
+    "DAILY_RATE": "Daily Rate",
+    "CURRENCY": "Currency",
+    "TOTAL_INCOME": "Total Income"
+  },
+  "CERTIFICATES": {
+    "TITLE": "Certificates",
+    "CERTIFICATE_TYPE": "Certificate Type",
+    "ISSUE_DATE": "Issue Date",
+    "EXPIRY_DATE": "Expiry Date",
+    "ADD_TITLE": "Certificate Add",
+    "CREATE_TITLE": "Create Certificate Type"
+  },
+  "TABS": {
+    "CREW_CARD": "Crew Card",
+    "CERTIFICATES": "Certificates"
+  },
+  "BUTTONS": {
+    "ADD_CREW": "Add Crew",
+    "CREATE_CERTIFICATE": "Create Certificate Type",
+    "SAVE": "Save",
+    "CLOSE": "Close",
+    "DELETE": "Delete",
+    "BACK": "Back"
+  },
+  "TABLE": {
+    "NO": "No.",
+    "TITLE": "Title",
+    "ACTIONS": "Actions"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description"
+  },
+  "DIALOG": {
+    "DELETE_TITLE": "Crew Deleted",
+    "DELETE_CONFIRM": "Are you sure to delete this crew?"
+  },
+  "CURRENCY_OPTIONS": {
+    "USD": "Dollars",
+    "TL": "Turkish Liras",
+    "POUND": "Pound"
+  }
+}

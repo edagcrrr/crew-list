@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+  <div class="language-selector">
+    <mat-form-field>
+      <mat-select [(value)]="selectedLanguage" (selectionChange)="switchLanguage($event.value)">
+        <mat-option value="en">
+          <div class="language-option">
+            <span class="flag-icon flag-en"></span>
+            <span>English</span>
+          </div>
+        </mat-option>
+        <mat-option value="fr">
+          <div class="language-option">
+            <span class="flag-icon flag-fr"></span>
+            <span>Français</span>
+          </div>
+        </mat-option>
+        <mat-option value="pt">
+          <div class="language-option">
+            <span class="flag-icon flag-pt"></span>
+            <span>Português</span>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <router-outlet></router-outlet>
+</div>

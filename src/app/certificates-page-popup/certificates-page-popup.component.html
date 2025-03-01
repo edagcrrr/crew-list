@@ -1,23 +1,22 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title class="dialog-title">Certificates</h2>
+  <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.TITLE' | translate }}</h2>
 
   <mat-dialog-content class="dialog-content">
     <mat-list>
       <mat-list-item *ngFor="let item of data">
-
-  <mat-card appearance="outlined">
-    <mat-card-content>
-      <p matListItemTitle>{{ item.certificateType.name }}</p>
-      <small matListItemLine>{{ item.certificateType.description }}</small>
-      <p matListItemTitle>{{ item.issueDate }}</p>
-      <p matListItemTitle>{{ item.expiryDate }}</p>
-    </mat-card-content>
-  </mat-card>
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            <p matListItemTitle>{{ item.certificateType.name }}</p>
+            <small matListItemLine>{{ item.certificateType.description }}</small>
+            <p matListItemTitle>{{ item.issueDate }}</p>
+            <p matListItemTitle>{{ item.expiryDate }}</p>
+          </mat-card-content>
+        </mat-card>
       </mat-list-item>
     </mat-list>
   </mat-dialog-content>
 
   <mat-dialog-actions class="dialog-actions">
-    <button mat-button (click)="onClose()">Kapat</button>
+    <button mat-button (click)="onClose()">{{ 'BUTTONS.CLOSE' | translate }}</button>
   </mat-dialog-actions>
 </div>

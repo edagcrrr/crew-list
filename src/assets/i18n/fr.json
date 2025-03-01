@@ -1,0 +1,50 @@
+{
+  "PERSONAL_INFO": {
+    "TITLE": "Informations Personnelles",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom",
+    "NATIONALITY": "Nationalité",
+    "DAYS_ON_BOARD": "Jours à Bord",
+    "DAILY_RATE": "Taux Journalier",
+    "CURRENCY": "Devise",
+    "TOTAL_INCOME": "Revenu Total"
+  },
+  "CERTIFICATES": {
+    "TITLE": "Certificats",
+    "CERTIFICATE_TYPE": "Type de Certificat",
+    "ISSUE_DATE": "Date d'Émission",
+    "EXPIRY_DATE": "Date d'Expiration",
+    "ADD_TITLE": "Ajouter un Certificat",
+    "CREATE_TITLE": "Créer un Type de Certificat"
+  },
+  "TABS": {
+    "CREW_CARD": "Carte d'Équipage",
+    "CERTIFICATES": "Certificats"
+  },
+  "BUTTONS": {
+    "ADD_CREW": "Ajouter un Membre",
+    "CREATE_CERTIFICATE": "Créer un Type de Certificat",
+    "SAVE": "Enregistrer",
+    "CLOSE": "Fermer",
+    "DELETE": "Supprimer",
+    "BACK": "Retour"
+  },
+  "TABLE": {
+    "NO": "N°",
+    "TITLE": "Titre",
+    "ACTIONS": "Actions"
+  },
+  "FORM": {
+    "NAME": "Nom",
+    "DESCRIPTION": "Description"
+  },
+  "DIALOG": {
+    "DELETE_TITLE": "Membre Supprimé",
+    "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer ce membre?"
+  },
+  "CURRENCY_OPTIONS": {
+    "USD": "Dollars",
+    "TL": "Lires Turques",
+    "POUND": "Livres"
+  }
+} 

@@ -11,6 +11,7 @@ import { CrewPopupComponent } from '../crew-popup/crew-popup.component';
 import { DeleteCrewPopupComponent } from '../delete-crew-popup/delete-crew-popup.component';
 import { CertificateComponentPopupComponent } from '../certificates-page-popup/certificates-page-popup.component';
 import { ICrewItem } from '../types/crew-type';
+import { TranslateModule } from '@ngx-translate/core';
 
 const ELEMENT_DATA: ICrewItem[] = [
   {
@@ -91,8 +92,6 @@ const ELEMENT_DATA: ICrewItem[] = [
 @Component({
   selector: 'app-crew-list',
   standalone: true,
-  templateUrl: './crew-list.component.html',
-  styleUrls: ['./crew-list.component.css'],
   imports: [
     MatButtonModule,
     MatTableModule,
@@ -100,10 +99,16 @@ const ELEMENT_DATA: ICrewItem[] = [
     MatPaginatorModule,
     MatIconModule,
     MatDialogModule,
+    TranslateModule
   ],
+  templateUrl: './crew-list.component.html',
+  styleUrl: './crew-list.component.css'
 })
 export class CrewListComponent implements AfterViewInit {
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   displayedColumns: string[] = [
     'position',

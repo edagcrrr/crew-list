@@ -1,29 +1,33 @@
 <div class="container">
+  <button mat-button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    {{ 'BUTTONS.BACK' | translate }}
+  </button>
   <mat-card appearance="outlined">
     <mat-card-content>
-      <h1>Create Certificate Type</h1>
+      <h1>{{ 'CERTIFICATES.CREATE_TITLE' | translate }}</h1>
       <form [formGroup]="form" class="example-form">
         <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" [formControlName]="'name'" />
+          <mat-label>{{ 'FORM.NAME' | translate }}</mat-label>
+          <input matInput placeholder="{{ 'FORM.NAME' | translate }}" [formControlName]="'name'" />
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <mat-label>Description</mat-label>
+          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
           <input
             matInput
-            placeholder="Description"
+            placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
             [formControlName]="'description'"
           />
         </mat-form-field>
       </form>
       <button
-      mat-flat-button
-      color="primary"
-      (click)="onSave()"
-      [disabled]="form.invalid"
-    >
-      Kaydet
-    </button>
+        mat-flat-button
+        color="primary"
+        (click)="onSave()"
+        [disabled]="form.invalid"
+      >
+        {{ 'BUTTONS.SAVE' | translate }}
+      </button>
     </mat-card-content>
   </mat-card>
 </div>

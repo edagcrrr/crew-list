@@ -9,11 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-certificate-add-popup',
-  templateUrl: './certificate-add-popup.component.html',
-  styleUrls: ['./certificate-add-popup.component.css'],
+  standalone: true,
   imports: [
     MatButtonModule,
     MatDialogModule,
@@ -21,7 +21,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    TranslateModule
   ],
+  templateUrl: './certificate-add-popup.component.html',
+  styleUrl: './certificate-add-popup.component.css'
 })
 export class CertificateAddPopupComponent {
   form: FormGroup;

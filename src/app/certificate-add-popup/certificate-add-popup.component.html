@@ -1,11 +1,11 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title class="dialog-title">Certificate Add</h2>
+  <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.ADD_TITLE' | translate }}</h2>
   <mat-dialog-content class="dialog-content">
     <!-- <form [formGroup]="form">
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Certificate Type</mat-label>
+            <mat-label>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}</mat-label>
             <mat-select [formControlName]="'nationality'">
               <mat-option value="Turkish">Turkish</mat-option>
               <mat-option value="Greek">Greek</mat-option>
@@ -17,7 +17,7 @@
 
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Title</mat-label>
+            <mat-label>{{ 'TABLE.TITLE' | translate }}</mat-label>
             <mat-select [formControlName]="'title'">
               <mat-option value="Captain">Captain</mat-option>
               <mat-option value="2. Captain">2. Captain</mat-option>
@@ -30,14 +30,14 @@
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Days On Board</mat-label>
+            <mat-label>{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}</mat-label>
             <input matInput [formControlName]="'daysOnBoard'" />
           </mat-form-field>
         </div>
 
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Daily Rate</mat-label>
+            <mat-label>{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}</mat-label>
             <input matInput [formControlName]="'dailyRate'" />
           </mat-form-field>
         </div>
@@ -46,18 +46,18 @@
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Currency</mat-label>
+            <mat-label>{{ 'PERSONAL_INFO.CURRENCY' | translate }}</mat-label>
             <mat-select [formControlName]="'currency'">
-              <mat-option value="USD">Dollars</mat-option>
-              <mat-option value="TL">Turkish Liras</mat-option>
-              <mat-option value="Pound">Pound</mat-option>
+              <mat-option value="USD">{{ 'CURRENCY_OPTIONS.USD' | translate }}</mat-option>
+              <mat-option value="TL">{{ 'CURRENCY_OPTIONS.TL' | translate }}</mat-option>
+              <mat-option value="Pound">{{ 'CURRENCY_OPTIONS.POUND' | translate }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Total Income</mat-label>
+            <mat-label>{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}</mat-label>
             <input matInput [formControlName]="'totalIncome'" />
           </mat-form-field>
         </div>
@@ -65,14 +65,14 @@
     </form> -->
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button (click)="onClose()">Close</button>
+    <button mat-raised-button (click)="onClose()">{{ 'BUTTONS.CLOSE' | translate }}</button>
     <button
       mat-flat-button
       color="primary"
       (click)="onSave()"
       [disabled]="form.invalid"
     >
-      Save
+      {{ 'BUTTONS.SAVE' | translate }}
     </button>
   </mat-dialog-actions>
 </div>

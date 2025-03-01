@@ -1,0 +1,50 @@
+{
+  "PERSONAL_INFO": {
+    "TITLE": "Informações Pessoais",
+    "FIRST_NAME": "Nome",
+    "LAST_NAME": "Sobrenome",
+    "NATIONALITY": "Nacionalidade",
+    "DAYS_ON_BOARD": "Dias a Bordo",
+    "DAILY_RATE": "Taxa Diária",
+    "CURRENCY": "Moeda",
+    "TOTAL_INCOME": "Renda Total"
+  },
+  "CERTIFICATES": {
+    "TITLE": "Certificados",
+    "CERTIFICATE_TYPE": "Tipo de Certificado",
+    "ISSUE_DATE": "Data de Emissão",
+    "EXPIRY_DATE": "Data de Validade",
+    "ADD_TITLE": "Adicionar Certificado",
+    "CREATE_TITLE": "Criar Tipo de Certificado"
+  },
+  "TABS": {
+    "CREW_CARD": "Cartão de Tripulação",
+    "CERTIFICATES": "Certificados"
+  },
+  "BUTTONS": {
+    "ADD_CREW": "Adicionar Tripulante",
+    "CREATE_CERTIFICATE": "Criar Tipo de Certificado",
+    "SAVE": "Salvar",
+    "CLOSE": "Fechar",
+    "DELETE": "Excluir",
+    "BACK": "Voltar"
+  },
+  "TABLE": {
+    "NO": "Nº",
+    "TITLE": "Título",
+    "ACTIONS": "Ações"
+  },
+  "FORM": {
+    "NAME": "Nome",
+    "DESCRIPTION": "Descrição"
+  },
+  "DIALOG": {
+    "DELETE_TITLE": "Tripulante Excluído",
+    "DELETE_CONFIRM": "Tem certeza que deseja excluir este tripulante?"
+  },
+  "CURRENCY_OPTIONS": {
+    "USD": "Dólares",
+    "TL": "Liras Turcas",
+    "POUND": "Libras"
+  }
+} 

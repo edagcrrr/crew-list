@@ -5,12 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-certificate-type',
   standalone: true,
-  templateUrl: './create-certificate-type.component.html',
-  styleUrls: ['./create-certificate-type.component.css'],
   imports: [
     MatButtonModule,
     ReactiveFormsModule,
@@ -18,12 +19,19 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    TranslateModule,
+    MatIconModule
   ],
+  templateUrl: './create-certificate-type.component.html',
+  styleUrl: './create-certificate-type.component.css'
 })
 export class CreateCertificateTypeComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       name: [''],
       description: [''],
@@ -32,5 +40,9 @@ export class CreateCertificateTypeComponent {
 
   onSave() {
     console.log('Form verisi:', this.form.value);
+  }
+
+  goBack() {
+    this.router.navigate(['/']);
   }
 }

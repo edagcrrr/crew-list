@@ -2,7 +2,7 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 table {
@@ -21,4 +21,19 @@ th, td {
   font-size: 16px;
   width: 16px;
   height: 16px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.language-selector {
+  width: 120px;
 }

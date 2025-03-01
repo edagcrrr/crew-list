@@ -11,11 +11,11 @@ import {MatListModule} from '@angular/material/list';
 import { ICertificateItem } from '../types/crew-type';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-certificates-page-popup',
-  templateUrl: './certificates-page-popup.component.html',
-  styleUrls: ['./certificates-page-popup.component.css'],
+  standalone: true,
   imports: [
     MatButtonModule,
     MatDialogModule,
@@ -23,8 +23,11 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatListModule,
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    TranslateModule
   ],
+  templateUrl: './certificates-page-popup.component.html',
+  styleUrl: './certificates-page-popup.component.css'
 })
 export class CertificateComponentPopupComponent {
   constructor(

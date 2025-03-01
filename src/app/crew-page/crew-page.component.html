@@ -1,22 +1,93 @@
 <div class="container">
+  <button mat-button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    {{ 'BUTTONS.BACK' | translate }}
+  </button>
   <mat-tab-group>
-    <mat-tab label="Certificates">
+    <mat-tab label="{{ 'TABS.CREW_CARD' | translate }}">
       <mat-card appearance="outlined">
         <mat-card-content>
-          <h1>Certificates</h1>
+          <h1>{{ 'PERSONAL_INFO.TITLE' | translate }}</h1>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.FIRST_NAME' | translate }}</mat-label>
+              <input matInput placeholder="{{ 'PERSONAL_INFO.FIRST_NAME' | translate }}" value="name" disabled />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.LAST_NAME' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.LAST_NAME' | translate }}"
+                value="lastName"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.NATIONALITY' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.NATIONALITY' | translate }}"
+                value="nationality"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}"
+                value="daysOnBoard"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}"
+                value="dailyRate"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.CURRENCY' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.CURRENCY' | translate }}"
+                value="currency"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}"
+                value="totalIncome"
+                disabled
+              />
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="{{ 'TABS.CERTIFICATES' | translate }}">
+      <mat-card appearance="outlined">
+        <mat-card-content>
+          <h1>{{ 'CERTIFICATES.TITLE' | translate }}</h1>
           <div style="display: flex">
             <mat-card appearance="outlined">
               <mat-card-content>
-                <b>Sertificate Type: </b>Deneme <br />
-                <b>Issue Date: </b>12.12.15 <br />
-                <b>Expiry Date: </b>12.12.25
+                <b>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}: </b>Deneme <br />
+                <b>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}: </b>12.12.15 <br />
+                <b>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}: </b>12.12.25
               </mat-card-content>
             </mat-card>
             <mat-card appearance="outlined" style="margin-left: 5px">
               <mat-card-content>
-                <b>Sertificate Type: </b>Deneme <br />
-                <b>Issue Date: </b>12.12.15 <br />
-                <b>Expiry Date: </b>12.12.25
+                <b>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}: </b>Deneme <br />
+                <b>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}: </b>12.12.15 <br />
+                <b>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}: </b>12.12.25
               </mat-card-content>
             </mat-card>
           </div>

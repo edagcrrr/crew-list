@@ -8,17 +8,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ICrewItem } from '../types/crew-type';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delete-crew-popup',
-  templateUrl: './delete-crew-popup.component.html',
-  styleUrls: ['./delete-crew-popup.component.css'],
+  standalone: true,
   imports: [
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    TranslateModule
   ],
+  templateUrl: './delete-crew-popup.component.html',
+  styleUrl: './delete-crew-popup.component.css'
 })
 export class DeleteCrewPopupComponent {
   constructor(
