@@ -1,28 +1,28 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.ADD_TITLE' | translate }}</h2>
+  <h2 mat-dialog-title class="dialog-title">
+    {{ "CERTIFICATES.ADD_TITLE" | translate }}
+  </h2>
   <mat-dialog-content class="dialog-content">
-    <!-- <form [formGroup]="form">
+    <form [formGroup]="form">
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}</mat-label>
-            <mat-select [formControlName]="'nationality'">
-              <mat-option value="Turkish">Turkish</mat-option>
-              <mat-option value="Greek">Greek</mat-option>
-              <mat-option value="British">British</mat-option>
-              <mat-option value="Egyptian">Egyptian</mat-option>
+            <mat-select [formControlName]="'certificateType'">
+              <mat-option value="1">Deneme</mat-option>
+              <mat-option value="2">Deneme 2</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>{{ 'TABLE.TITLE' | translate }}</mat-label>
-            <mat-select [formControlName]="'title'">
-              <mat-option value="Captain">Captain</mat-option>
-              <mat-option value="2. Captain">2. Captain</mat-option>
-              <mat-option value="Crew">Crew</mat-option>
-            </mat-select>
+            <mat-label>{{ "CERTIFICATES.ISSUE_DATE" | translate }}</mat-label>
+            <input
+              matInput
+              placeholder="{{ 'CERTIFICATES.ISSUE_DATE' | translate }}"
+              value="issueDate"
+            />
           </mat-form-field>
         </div>
       </div>
@@ -30,49 +30,28 @@
       <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}</mat-label>
-            <input matInput [formControlName]="'daysOnBoard'" />
-          </mat-form-field>
-        </div>
-
-        <div class="input-container">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}</mat-label>
-            <input matInput [formControlName]="'dailyRate'" />
+            <mat-label>{{ "CERTIFICATES.EXPIRY_DATE" | translate }}</mat-label>
+            <input
+              matInput
+              placeholder="{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}"
+              value="expiryDate"
+            />
           </mat-form-field>
         </div>
       </div>
-
-      <div class="input-row">
-        <div class="input-container">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>{{ 'PERSONAL_INFO.CURRENCY' | translate }}</mat-label>
-            <mat-select [formControlName]="'currency'">
-              <mat-option value="USD">{{ 'CURRENCY_OPTIONS.USD' | translate }}</mat-option>
-              <mat-option value="TL">{{ 'CURRENCY_OPTIONS.TL' | translate }}</mat-option>
-              <mat-option value="Pound">{{ 'CURRENCY_OPTIONS.POUND' | translate }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div class="input-container">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}</mat-label>
-            <input matInput [formControlName]="'totalIncome'" />
-          </mat-form-field>
-        </div>
-      </div>
-    </form> -->
+    </form>
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button (click)="onClose()">{{ 'BUTTONS.CLOSE' | translate }}</button>
+    <button mat-raised-button (click)="onClose()">
+      {{ "BUTTONS.CLOSE" | translate }}
+    </button>
     <button
       mat-flat-button
       color="primary"
       (click)="onSave()"
       [disabled]="form.invalid"
     >
-      {{ 'BUTTONS.SAVE' | translate }}
+      {{ "BUTTONS.SAVE" | translate }}
     </button>
   </mat-dialog-actions>
 </div>

@@ -40,11 +40,24 @@
   },
   "DIALOG": {
     "DELETE_TITLE": "Tripulante Excluído",
-    "DELETE_CONFIRM": "Tem certeza que deseja excluir este tripulante?"
+    "DELETE_CONFIRM": "Tem certeza que deseja excluir este tripulante?",
+    "CREW_CARD_TITLE": "Cartão de Tripulação"
   },
   "CURRENCY_OPTIONS": {
     "USD": "Dólares",
     "TL": "Liras Turcas",
-    "POUND": "Libras"
+    "POUND": "Libras",
+    "EU": "Euros"
+  },
+  "NATIONALITY_OPTIONS": {
+    "TURKISH": "Turco",
+    "GREEK": "Grego",
+    "BRITISH": "Britânico",
+    "EGYPTIAN": "Egípcio"
+  },
+  "TITLE_OPTIONS": {
+    "CAPTAIN": "Capitão",
+    "SECOND_CAPTAIN": "2º Capitão",
+    "CREW": "Tripulação"
   }
 } 

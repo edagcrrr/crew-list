@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   MatDialogRef,
   MAT_DIALOG_DATA,
@@ -6,26 +7,29 @@ import {
   MatDialog,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CertificateAddPopupComponent } from '../certificate-add-popup/certificate-add-popup.component';
 import { ICrewItem } from '../types/crew-type';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-crew-popup',
-  templateUrl: './crew-popup.component.html',
-  styleUrls: ['./crew-popup.component.css'],
+  standalone: true,
   imports: [
+    CommonModule,
     MatButtonModule,
     MatDialogModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    ReactiveFormsModule,
+    TranslateModule
   ],
+  templateUrl: './crew-popup.component.html',
+  styleUrl: './crew-popup.component.css'
 })
 export class CrewPopupComponent {
   form: FormGroup;

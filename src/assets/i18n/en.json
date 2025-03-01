@@ -40,11 +40,24 @@
   },
   "DIALOG": {
     "DELETE_TITLE": "Crew Deleted",
-    "DELETE_CONFIRM": "Are you sure to delete this crew?"
+    "DELETE_CONFIRM": "Are you sure to delete this crew?",
+    "CREW_CARD_TITLE": "Crew Card"
   },
   "CURRENCY_OPTIONS": {
     "USD": "Dollars",
     "TL": "Turkish Liras",
-    "POUND": "Pound"
+    "POUND": "Pound",
+    "EU": "Euros"
+  },
+  "NATIONALITY_OPTIONS": {
+    "TURKISH": "Turkish",
+    "GREEK": "Greek",
+    "BRITISH": "British",
+    "EGYPTIAN": "Egyptian"
+  },
+  "TITLE_OPTIONS": {
+    "CAPTAIN": "Captain",
+    "SECOND_CAPTAIN": "2. Captain",
+    "CREW": "Crew"
   }
 }

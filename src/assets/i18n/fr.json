@@ -40,11 +40,24 @@
   },
   "DIALOG": {
     "DELETE_TITLE": "Membre Supprimé",
-    "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer ce membre?"
+    "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer ce membre?",
+    "CREW_CARD_TITLE": "Carte d'Équipage"
   },
   "CURRENCY_OPTIONS": {
     "USD": "Dollars",
     "TL": "Lires Turques",
-    "POUND": "Livres"
+    "POUND": "Livres",
+    "EU": "Euros"
+  },
+  "NATIONALITY_OPTIONS": {
+    "TURKISH": "Turc",
+    "GREEK": "Grec",
+    "BRITISH": "Britannique",
+    "EGYPTIAN": "Égyptien"
+  },
+  "TITLE_OPTIONS": {
+    "CAPTAIN": "Capitaine",
+    "SECOND_CAPTAIN": "Second Capitaine",
+    "CREW": "Équipage"
   }
 } 
