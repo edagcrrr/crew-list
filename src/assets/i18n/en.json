@@ -7,15 +7,21 @@
     "DAYS_ON_BOARD": "Days on Board",
     "DAILY_RATE": "Daily Rate",
     "CURRENCY": "Currency",
-    "TOTAL_INCOME": "Total Income"
+    "TOTAL_INCOME": "Total Income",
+    "DISCOUNT": "Discount"
   },
   "CERTIFICATES": {
     "TITLE": "Certificates",
+    "ADD_TITLE": "Add Certificate",
+    "CREATE_TYPE_TITLE": "Create Certificate Type",
     "CERTIFICATE_TYPE": "Certificate Type",
+    "TYPE_NAME": "Certificate Type Name",
+    "TYPE_NAME_PLACEHOLDER": "Enter certificate type name",
+    "TYPE_DESCRIPTION": "Description",
+    "TYPE_DESCRIPTION_PLACEHOLDER": "Enter certificate type description",
     "ISSUE_DATE": "Issue Date",
     "EXPIRY_DATE": "Expiry Date",
-    "ADD_TITLE": "Certificate Add",
-    "CREATE_TITLE": "Create Certificate Type"
+    "NO_CERTIFICATES": "No certificates added yet"
   },
   "TABS": {
     "CREW_CARD": "Crew Card",
@@ -25,6 +31,7 @@
     "ADD_CREW": "Add Crew",
     "CREATE_CERTIFICATE": "Create Certificate Type",
     "SAVE": "Save",
+    "CANCEL": "Cancel",
     "CLOSE": "Close",
     "DELETE": "Delete",
     "BACK": "Back"
@@ -59,5 +66,10 @@
     "CAPTAIN": "Captain",
     "SECOND_CAPTAIN": "2. Captain",
     "CREW": "Crew"
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required",
+    "MIN_LENGTH_3": "Must be at least 3 characters",
+    "MIN_LENGTH_10": "Must be at least 10 characters"
   }
 }

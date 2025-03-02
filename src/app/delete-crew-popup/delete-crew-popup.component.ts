@@ -5,9 +5,6 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ICrewItem } from '../types/crew-type';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -16,8 +13,6 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
     TranslateModule
   ],
   templateUrl: './delete-crew-popup.component.html',
@@ -25,16 +20,15 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class DeleteCrewPopupComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
+    @Inject(MAT_DIALOG_DATA) public data: number,
     public dialogRef: MatDialogRef<DeleteCrewPopupComponent>
   ) {}
 
   onSave() {
-    console.log('deleted');
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
-  onClose(): void {
-    this.dialogRef.close();
+  onClose() {
+    this.dialogRef.close(false);
   }
 }

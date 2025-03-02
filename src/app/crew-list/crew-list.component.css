@@ -37,3 +37,38 @@ th, td {
 .language-selector {
   width: 120px;
 }
+
+.discount-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.discount-input {
+  width: 45px;
+  height: 24px;
+  text-align: center;
+  font-size: inherit;
+  padding: 0 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.discount-input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #999;
+}
+
+.discount-input::-webkit-inner-spin-button,
+.discount-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.discount-suffix {
+  font-size: inherit;
+  color: rgba(0, 0, 0, 0.6);
+}

@@ -1,34 +1,54 @@
 .container {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
-  position: relative;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-table {
-  width: 100%;
+.back-button {
+  margin-bottom: 20px;
 }
 
 .example-form {
-  min-width: 150px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .example-full-width {
   width: 100%;
 }
 
-.back-button {
-  position: absolute;
-  top: -60px;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+mat-card {
+  margin-top: 20px;
 }
 
-.back-button mat-icon {
-  margin-right: 4px;
+.certificates-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.certificate-card {
+  margin: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.certificate-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-certificates {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }

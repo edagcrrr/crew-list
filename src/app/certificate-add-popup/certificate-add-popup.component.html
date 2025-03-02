@@ -8,10 +8,14 @@
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}</mat-label>
-            <mat-select [formControlName]="'certificateType'">
-              <mat-option value="1">Deneme</mat-option>
-              <mat-option value="2">Deneme 2</mat-option>
+            <mat-select formControlName="certificateType">
+              <mat-option *ngFor="let type of certificateTypes" [value]="type">
+                {{ type.name }}
+              </mat-option>
             </mat-select>
+            <mat-error *ngIf="form.get('certificateType')?.hasError('required')">
+              {{ 'VALIDATION.REQUIRED' | translate }}
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -20,9 +24,15 @@
             <mat-label>{{ "CERTIFICATES.ISSUE_DATE" | translate }}</mat-label>
             <input
               matInput
+              [matDatepicker]="issuePicker"
+              formControlName="issueDate"
               placeholder="{{ 'CERTIFICATES.ISSUE_DATE' | translate }}"
-              value="issueDate"
             />
+            <mat-datepicker-toggle matIconSuffix [for]="issuePicker"></mat-datepicker-toggle>
+            <mat-datepicker #issuePicker></mat-datepicker>
+            <mat-error *ngIf="form.get('issueDate')?.hasError('required')">
+              {{ 'VALIDATION.REQUIRED' | translate }}
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -33,9 +43,15 @@
             <mat-label>{{ "CERTIFICATES.EXPIRY_DATE" | translate }}</mat-label>
             <input
               matInput
+              [matDatepicker]="expiryPicker"
+              formControlName="expiryDate"
               placeholder="{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}"
-              value="expiryDate"
             />
+            <mat-datepicker-toggle matIconSuffix [for]="expiryPicker"></mat-datepicker-toggle>
+            <mat-datepicker #expiryPicker></mat-datepicker>
+            <mat-error *ngIf="form.get('expiryDate')?.hasError('required')">
+              {{ 'VALIDATION.REQUIRED' | translate }}
+            </mat-error>
           </mat-form-field>
         </div>
       </div>

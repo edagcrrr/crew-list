@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CertificateAddPopupComponent } from '../certificate-add-popup/certificate-add-popup.component';
 import { ICrewItem } from '../types/crew-type';
 import { TranslateModule } from '@ngx-translate/core';
+import { CrewService } from '../services/crew.service';
 
 @Component({
   selector: 'app-crew-popup',
@@ -33,13 +34,16 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CrewPopupComponent {
   form: FormGroup;
+  isEditMode: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
     public dialogRef: MatDialogRef<CrewPopupComponent>,
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private crewService: CrewService
   ) {
+    this.isEditMode = !!data.position;
     this.form = this.fb.group({
       name: [data.name || ''],
       lastName: [data.lastName || ''],
@@ -48,18 +52,36 @@ export class CrewPopupComponent {
       daysOnBoard: [data.daysOnBoard || ''],
       dailyRate: [data.dailyRate || ''],
       currency: [data.currency || ''],
-      totalIncome: [data.totalIncome || ''],
       certificates: [data.certificates || []],
     });
   }
 
+  get totalIncome(): number | string {
+    const dailyRate = this.form.get('dailyRate')?.value;
+    const daysOnBoard = this.form.get('daysOnBoard')?.value;
+    return dailyRate && daysOnBoard ? dailyRate * daysOnBoard : '';
+  }
+
   onSave() {
-    console.log('Form verisi:', this.form.value);
-    this.dialogRef.close();
+    if (this.form.valid) {
+      const formData = this.form.value;
+      
+      if (this.isEditMode) {
+        const updatedCrew: ICrewItem = {
+          ...formData,
+          position: this.data.position
+        };
+        this.crewService.updateCrew(updatedCrew);
+      } else {
+        this.crewService.addCrew(formData);
+      }
+      
+      this.dialogRef.close(true);
+    }
   }
 
   onClose() {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   onCertificatesOpen() {

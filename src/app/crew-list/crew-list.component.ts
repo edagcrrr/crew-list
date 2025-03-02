@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -12,104 +12,28 @@ import { DeleteCrewPopupComponent } from '../delete-crew-popup/delete-crew-popup
 import { CertificateComponentPopupComponent } from '../certificates-page-popup/certificates-page-popup.component';
 import { ICrewItem } from '../types/crew-type';
 import { TranslateModule } from '@ngx-translate/core';
-
-const ELEMENT_DATA: ICrewItem[] = [
-  {
-    position: 1,
-    name: 'Eda',
-    lastName: 'Gecer',
-    nationality: 'Turkish',
-    title: 'Captain',
-    daysOnBoard: '3',
-    dailyRate: '150',
-    currency: 'USD',
-    totalIncome: '1800',
-    certificates: [
-      {
-        certificateType: {
-          name: 'Deneme1',
-          description: 'DenemeDesc',
-        },
-        issueDate: '12/12/15',
-        expiryDate: '12/12/2026',
-      },
-      {
-        certificateType: {
-          name: 'Deneme2',
-          description: 'Deneme2Desc',
-        },
-        issueDate: '12/12/15',
-        expiryDate: '12/12/2026',
-      },
-    ],
-  },
-  {
-    position: 2,
-    name: 'Eda2',
-    lastName: 'Gecer',
-    nationality: 'Turkish',
-    title: 'Captain',
-    daysOnBoard: '3',
-    dailyRate: '150',
-    currency: 'USD',
-    totalIncome: '1800',
-  },
-  {
-    position: 3,
-    name: 'Eda3',
-    lastName: 'Gecer',
-    nationality: 'Turkish',
-    title: 'Captain',
-    daysOnBoard: '3',
-    dailyRate: '150',
-    currency: 'USD',
-    totalIncome: '1800',
-  },
-  {
-    position: 4,
-    name: 'Eda4',
-    lastName: 'Gecer',
-    nationality: 'Turkish',
-    title: 'Captain',
-    daysOnBoard: '3',
-    dailyRate: '150',
-    currency: 'USD',
-    totalIncome: '1800',
-  },
-  {
-    position: 5,
-    name: 'Eda5',
-    lastName: 'Gecer',
-    nationality: 'Turkish',
-    title: 'Captain',
-    daysOnBoard: '3',
-    dailyRate: '150',
-    currency: 'USD',
-    totalIncome: '1800',
-  },
-];
+import { CrewService } from '../services/crew.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crew-list',
   standalone: true,
   imports: [
+    CommonModule,
     MatButtonModule,
     MatTableModule,
     MatCardModule,
     MatPaginatorModule,
     MatIconModule,
     MatDialogModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.css'
 })
-export class CrewListComponent implements AfterViewInit {
-  constructor(
-    private router: Router,
-    private dialog: MatDialog
-  ) {}
-
+export class CrewListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'position',
     'name',
@@ -119,21 +43,44 @@ export class CrewListComponent implements AfterViewInit {
     'daysOnBoard',
     'dailyRate',
     'currency',
+    'discount',
     'totalIncome',
     'actions',
   ];
 
-  dataSource = new MatTableDataSource<ICrewItem>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<ICrewItem>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private crewService: CrewService
+  ) {}
+
+  ngOnInit() {
+    this.loadCrewList();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
+  private loadCrewList() {
+    this.crewService.getCrewList().subscribe(crews => {
+      this.dataSource.data = crews;
+    });
+  }
+
   addCrewClicked() {
-    this.dialog.open(CrewPopupComponent, {
+    const dialogRef = this.dialog.open(CrewPopupComponent, {
       data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCrewList();
+      }
     });
   }
 
@@ -146,20 +93,70 @@ export class CrewListComponent implements AfterViewInit {
   }
 
   editClicked(crewItem: ICrewItem) {
-    this.dialog.open(CrewPopupComponent, {
+    const dialogRef = this.dialog.open(CrewPopupComponent, {
       data: crewItem,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCrewList();
+      }
     });
   }
 
   deleteClicked(position: number) {
-    this.dialog.open(DeleteCrewPopupComponent, {
+    const dialogRef = this.dialog.open(DeleteCrewPopupComponent, {
       data: position,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.crewService.deleteCrew(position);
+        this.loadCrewList();
+      }
     });
   }
 
   certificatesClicked(crewItem: ICrewItem) {
-    this.dialog.open(CertificateComponentPopupComponent, {
-      data: crewItem.certificates,
+    const dialogRef = this.dialog.open(CertificateComponentPopupComponent, {
+      width: '800px',
+      data: {
+        position: crewItem.position
+      }
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCrewList();
+      }
+    });
+  }
+
+  calculateTotalIncome(element: ICrewItem): string {
+    if (!element.dailyRate || !element.daysOnBoard) return '';
+    const baseTotal = element.dailyRate * element.daysOnBoard;
+    if (!element.discount) return baseTotal.toString();
+    const discountAmount = (baseTotal * element.discount) / 100;
+    return (baseTotal - discountAmount).toString();
+  }
+
+  onDiscountChange(value: number, element: ICrewItem) {
+    let discount = Number(value);
+    
+    if (isNaN(discount)) {
+      discount = 0;
+    } else if (discount < 0) {
+      discount = 0;
+    } else if (discount > 100) {
+      discount = 100;
+    }
+    
+    if (discount !== element.discount) {
+      const updatedCrew: ICrewItem = {
+        ...element,
+        discount: discount
+      };
+      this.crewService.updateCrew(updatedCrew);
+    }
   }
 }

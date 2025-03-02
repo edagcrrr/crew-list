@@ -2,21 +2,31 @@
   <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.TITLE' | translate }}</h2>
 
   <mat-dialog-content class="dialog-content">
-    <mat-list>
-      <mat-list-item *ngFor="let item of data">
-        <mat-card appearance="outlined">
-          <mat-card-content>
-            <p matListItemTitle>{{ item.certificateType.name }}</p>
-            <small matListItemLine>{{ item.certificateType.description }}</small>
-            <p matListItemTitle>{{ item.issueDate }}</p>
-            <p matListItemTitle>{{ item.expiryDate }}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-list-item>
-    </mat-list>
+    <div *ngIf="certificates?.length; else noCertificates" class="certificates-list">
+      <mat-card *ngFor="let cert of certificates" class="certificate-card">
+        <mat-card-content>
+          <div class="certificate-info">
+            <h3>{{ cert.certificateType.name }}</h3>
+            <p class="description">{{ cert.certificateType.description }}</p>
+            <div class="dates">
+              <p><strong>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}:</strong> {{ formatDate(cert.issueDate) }}</p>
+              <p><strong>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}:</strong> {{ formatDate(cert.expiryDate) }}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <ng-template #noCertificates>
+      <div class="no-certificates">
+        <p>{{ 'CERTIFICATES.NO_CERTIFICATES' | translate }}</p>
+      </div>
+    </ng-template>
   </mat-dialog-content>
 
   <mat-dialog-actions class="dialog-actions">
-    <button mat-button (click)="onClose()">{{ 'BUTTONS.CLOSE' | translate }}</button>
+    <button mat-raised-button (click)="onClose()">
+      {{ 'BUTTONS.CLOSE' | translate }}
+    </button>
   </mat-dialog-actions>
 </div>

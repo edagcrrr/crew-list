@@ -7,27 +7,33 @@
     "DAYS_ON_BOARD": "Jours à Bord",
     "DAILY_RATE": "Taux Journalier",
     "CURRENCY": "Devise",
-    "TOTAL_INCOME": "Revenu Total"
+    "TOTAL_INCOME": "Revenu Total",
+    "DISCOUNT": "Remise"
   },
   "CERTIFICATES": {
     "TITLE": "Certificats",
+    "ADD_TITLE": "Ajouter un Certificat",
+    "CREATE_TYPE_TITLE": "Créer un Type de Certificat",
     "CERTIFICATE_TYPE": "Type de Certificat",
+    "TYPE_NAME": "Nom du Type de Certificat",
+    "TYPE_NAME_PLACEHOLDER": "Entrez le nom du type de certificat",
+    "TYPE_DESCRIPTION": "Description",
+    "TYPE_DESCRIPTION_PLACEHOLDER": "Entrez la description du type de certificat",
     "ISSUE_DATE": "Date d'Émission",
     "EXPIRY_DATE": "Date d'Expiration",
-    "ADD_TITLE": "Ajouter un Certificat",
-    "CREATE_TITLE": "Créer un Type de Certificat"
+    "NO_CERTIFICATES": "Aucun certificat ajouté"
   },
   "TABS": {
     "CREW_CARD": "Carte d'Équipage",
     "CERTIFICATES": "Certificats"
   },
   "BUTTONS": {
-    "ADD_CREW": "Ajouter un Membre",
-    "CREATE_CERTIFICATE": "Créer un Type de Certificat",
+    "BACK": "Retour",
     "SAVE": "Enregistrer",
+    "CANCEL": "Annuler",
     "CLOSE": "Fermer",
-    "DELETE": "Supprimer",
-    "BACK": "Retour"
+    "ADD_CREW": "Ajouter un Membre d'Équipage",
+    "CREATE_CERTIFICATE": "Créer un Type de Certificat"
   },
   "TABLE": {
     "NO": "N°",
@@ -59,5 +65,10 @@
     "CAPTAIN": "Capitaine",
     "SECOND_CAPTAIN": "Second Capitaine",
     "CREW": "Équipage"
+  },
+  "VALIDATION": {
+    "REQUIRED": "Ce champ est obligatoire",
+    "MIN_LENGTH_3": "Doit contenir au moins 3 caractères",
+    "MIN_LENGTH_10": "Doit contenir au moins 10 caractères"
   }
 } 

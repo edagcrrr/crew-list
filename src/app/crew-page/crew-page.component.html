@@ -11,61 +11,39 @@
           <form class="example-form">
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.FIRST_NAME' | translate }}</mat-label>
-              <input matInput placeholder="{{ 'PERSONAL_INFO.FIRST_NAME' | translate }}" value="name" disabled />
+              <input matInput [value]="crewMember?.name || ''" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.LAST_NAME' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.LAST_NAME' | translate }}"
-                value="lastName"
-                disabled
-              />
+              <input matInput [value]="crewMember?.lastName || ''" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.NATIONALITY' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.NATIONALITY' | translate }}"
-                value="nationality"
-                disabled
-              />
+              <input matInput [value]="crewMember?.nationality || ''" disabled />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.TITLE' | translate }}</mat-label>
+              <input matInput [value]="crewMember?.title || ''" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}"
-                value="daysOnBoard"
-                disabled
-              />
+              <input matInput [value]="crewMember?.daysOnBoard || ''" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.DAILY_RATE' | translate }}"
-                value="dailyRate"
-                disabled
-              />
+              <input matInput [value]="crewMember?.dailyRate || ''" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.CURRENCY' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.CURRENCY' | translate }}"
-                value="currency"
-                disabled
-              />
+              <input matInput [value]="crewMember?.currency || ''" disabled />
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'PERSONAL_INFO.DISCOUNT' | translate }}</mat-label>
+              <input matInput [value]="(crewMember?.discount || 0) + '%'" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}</mat-label>
-              <input
-                matInput
-                placeholder="{{ 'PERSONAL_INFO.TOTAL_INCOME' | translate }}"
-                value="totalIncome"
-                disabled
-              />
+              <input matInput [value]="calculateTotalIncome()" disabled />
             </mat-form-field>
           </form>
         </mat-card-content>
@@ -75,22 +53,20 @@
       <mat-card appearance="outlined">
         <mat-card-content>
           <h1>{{ 'CERTIFICATES.TITLE' | translate }}</h1>
-          <div style="display: flex">
-            <mat-card appearance="outlined">
-              <mat-card-content>
-                <b>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}: </b>Deneme <br />
-                <b>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}: </b>12.12.15 <br />
-                <b>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}: </b>12.12.25
-              </mat-card-content>
-            </mat-card>
-            <mat-card appearance="outlined" style="margin-left: 5px">
-              <mat-card-content>
-                <b>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}: </b>Deneme <br />
-                <b>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}: </b>12.12.15 <br />
-                <b>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}: </b>12.12.25
-              </mat-card-content>
-            </mat-card>
+          <div *ngIf="certificates?.length; else noCertificates">
+            <div class="certificates-container">
+              <mat-card appearance="outlined" *ngFor="let cert of certificates" class="certificate-card">
+                <mat-card-content>
+                  <b>{{ 'CERTIFICATES.CERTIFICATE_TYPE' | translate }}: </b>{{ cert.certificateType.name }}<br />
+                  <b>{{ 'CERTIFICATES.ISSUE_DATE' | translate }}: </b>{{ cert.issueDate | date }}<br />
+                  <b>{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}: </b>{{ cert.expiryDate | date }}
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>
+          <ng-template #noCertificates>
+            <p class="no-certificates">{{ 'CERTIFICATES.NO_CERTIFICATES' | translate }}</p>
+          </ng-template>
         </mat-card-content>
       </mat-card>
     </mat-tab>

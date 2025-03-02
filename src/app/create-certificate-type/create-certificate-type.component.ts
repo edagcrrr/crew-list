@@ -1,48 +1,66 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, FormBuilder, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslateModule } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { CertificateTypeService } from '../services/certificate-type.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-create-certificate-type',
   standalone: true,
   imports: [
+    CommonModule,
     MatButtonModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    FormsModule,
+    MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
     TranslateModule,
-    MatIconModule
+    MatCardModule
   ],
   templateUrl: './create-certificate-type.component.html',
-  styleUrl: './create-certificate-type.component.css'
+  styleUrls: ['./create-certificate-type.component.css']
 })
 export class CreateCertificateTypeComponent {
   form: FormGroup;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private router: Router
+    private certificateTypeService: CertificateTypeService
   ) {
     this.form = this.fb.group({
-      name: [''],
-      description: [''],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(10)]]
     });
-  }
-
-  onSave() {
-    console.log('Form verisi:', this.form.value);
   }
 
   goBack() {
     this.router.navigate(['/']);
+  }
+
+  onSave() {
+    if (this.form.valid) {
+      this.certificateTypeService.addCertificateType(this.form.value);
+      this.router.navigate(['/']);
+    }
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.form.get(controlName);
+    if (control?.hasError('required')) {
+      return 'VALIDATION.REQUIRED';
+    }
+    if (control?.hasError('minlength')) {
+      return controlName === 'name' 
+        ? 'VALIDATION.MIN_LENGTH_3' 
+        : 'VALIDATION.MIN_LENGTH_10';
+    }
+    return '';
   }
 }

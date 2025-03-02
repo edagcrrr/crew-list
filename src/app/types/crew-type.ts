@@ -1,23 +1,25 @@
 export interface ICertificateType {
+  id: number;
   name: string;
   description: string;
 }
 
-export interface ICertificateItem {
+export interface ICertificate {
+  id: number;
   certificateType: ICertificateType;
-  issueDate: string;
-  expiryDate: string;
+  issueDate: Date;
+  expiryDate: Date;
 }
 
 export interface ICrewItem {
+  position: number;
   name: string;
   lastName: string;
   nationality: string;
   title: string;
-  daysOnBoard: string;
-  dailyRate: string;
+  daysOnBoard: number;
+  dailyRate: number;
   currency: string;
-  totalIncome: string;
-  position: number;
-  certificates?: ICertificateItem[];
+  discount?: number;
+  certificates?: ICertificate[];
 }

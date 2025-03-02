@@ -1,35 +1,42 @@
 .container {
+  padding: 35px;
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
-  position: relative;
-}
-
-table {
-  width: 100%;
-}
-
-.example-form {
-  min-width: 150px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.example-full-width {
-  width: 100%;
+  margin: 0 auto;
 }
 
 .back-button {
-  position: absolute;
-  top: -60px;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  margin-bottom: 20px;
 }
 
-.back-button mat-icon {
-  margin-right: 4px;
+.page-title {
+  color: #333;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.certificate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }

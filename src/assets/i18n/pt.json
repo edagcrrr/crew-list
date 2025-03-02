@@ -7,27 +7,33 @@
     "DAYS_ON_BOARD": "Dias a Bordo",
     "DAILY_RATE": "Taxa Diária",
     "CURRENCY": "Moeda",
-    "TOTAL_INCOME": "Renda Total"
+    "TOTAL_INCOME": "Renda Total",
+    "DISCOUNT": "Desconto"
   },
   "CERTIFICATES": {
     "TITLE": "Certificados",
+    "ADD_TITLE": "Adicionar Certificado",
+    "CREATE_TYPE_TITLE": "Criar Tipo de Certificado",
     "CERTIFICATE_TYPE": "Tipo de Certificado",
+    "TYPE_NAME": "Nome do Tipo de Certificado",
+    "TYPE_NAME_PLACEHOLDER": "Digite o nome do tipo de certificado",
+    "TYPE_DESCRIPTION": "Descrição",
+    "TYPE_DESCRIPTION_PLACEHOLDER": "Digite a descrição do tipo de certificado",
     "ISSUE_DATE": "Data de Emissão",
     "EXPIRY_DATE": "Data de Validade",
-    "ADD_TITLE": "Adicionar Certificado",
-    "CREATE_TITLE": "Criar Tipo de Certificado"
+    "NO_CERTIFICATES": "Nenhum certificado adicionado ainda"
   },
   "TABS": {
     "CREW_CARD": "Cartão de Tripulação",
     "CERTIFICATES": "Certificados"
   },
   "BUTTONS": {
-    "ADD_CREW": "Adicionar Tripulante",
-    "CREATE_CERTIFICATE": "Criar Tipo de Certificado",
+    "BACK": "Voltar",
     "SAVE": "Salvar",
+    "CANCEL": "Cancelar",
     "CLOSE": "Fechar",
-    "DELETE": "Excluir",
-    "BACK": "Voltar"
+    "ADD_CREW": "Adicionar Tripulante",
+    "CREATE_CERTIFICATE": "Criar Tipo de Certificado"
   },
   "TABLE": {
     "NO": "Nº",
@@ -59,5 +65,10 @@
     "CAPTAIN": "Capitão",
     "SECOND_CAPTAIN": "2º Capitão",
     "CREW": "Tripulação"
+  },
+  "VALIDATION": {
+    "REQUIRED": "Este campo é obrigatório",
+    "MIN_LENGTH_3": "Deve ter pelo menos 3 caracteres",
+    "MIN_LENGTH_10": "Deve ter pelo menos 10 caracteres"
   }
 } 

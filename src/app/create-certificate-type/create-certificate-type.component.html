@@ -3,31 +3,57 @@
     <mat-icon>arrow_back</mat-icon>
     {{ 'BUTTONS.BACK' | translate }}
   </button>
+
   <mat-card appearance="outlined">
     <mat-card-content>
-      <h1>{{ 'CERTIFICATES.CREATE_TITLE' | translate }}</h1>
-      <form [formGroup]="form" class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>{{ 'FORM.NAME' | translate }}</mat-label>
-          <input matInput placeholder="{{ 'FORM.NAME' | translate }}" [formControlName]="'name'" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
-          <input
-            matInput
-            placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
-            [formControlName]="'description'"
+      <h1 class="page-title">{{ 'CERTIFICATES.CREATE_TYPE_TITLE' | translate }}</h1>
+      
+      <form [formGroup]="form" (ngSubmit)="onSave()" class="certificate-form">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>{{ 'CERTIFICATES.TYPE_NAME' | translate }}</mat-label>
+          <input 
+            matInput 
+            formControlName="name" 
+            required 
+            placeholder="{{ 'CERTIFICATES.TYPE_NAME_PLACEHOLDER' | translate }}"
           />
+          <mat-error *ngIf="form.get('name')?.invalid">
+            {{ getErrorMessage('name') | translate }}
+          </mat-error>
         </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>{{ 'CERTIFICATES.TYPE_DESCRIPTION' | translate }}</mat-label>
+          <textarea 
+            matInput 
+            formControlName="description" 
+            required 
+            rows="4"
+            placeholder="{{ 'CERTIFICATES.TYPE_DESCRIPTION_PLACEHOLDER' | translate }}"
+          ></textarea>
+          <mat-error *ngIf="form.get('description')?.invalid">
+            {{ getErrorMessage('description') | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+          <button 
+            mat-stroked-button 
+            type="button" 
+            (click)="goBack()"
+          >
+            {{ 'BUTTONS.CANCEL' | translate }}
+          </button>
+          <button 
+            mat-flat-button 
+            color="primary" 
+            type="submit" 
+            [disabled]="form.invalid"
+          >
+            {{ 'BUTTONS.SAVE' | translate }}
+          </button>
+        </div>
       </form>
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="onSave()"
-        [disabled]="form.invalid"
-      >
-        {{ 'BUTTONS.SAVE' | translate }}
-      </button>
     </mat-card-content>
   </mat-card>
 </div>
