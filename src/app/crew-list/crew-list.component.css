@@ -95,3 +95,26 @@ th, td {
   min-width: 240px;
   max-width: 240px;
 }
+
+.income-summary {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0;
+}
+
+.income-item {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.income-item strong {
+  color: #1976d2;
+  margin-right: 8px;
+}

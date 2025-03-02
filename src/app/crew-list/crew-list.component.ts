@@ -16,6 +16,11 @@ import { CrewService } from '../services/crew.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+interface CurrencyTotal {
+  currency: string;
+  total: number;
+}
+
 @Component({
   selector: 'app-crew-list',
   standalone: true,
@@ -49,6 +54,7 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   ];
 
   dataSource = new MatTableDataSource<ICrewItem>();
+  currencyTotals: CurrencyTotal[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -69,7 +75,42 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   private loadCrewList() {
     this.crewService.getCrewList().subscribe(crews => {
       this.dataSource.data = crews;
+      this.calculateCurrencyTotals();
     });
+  }
+
+  private calculateCurrencyTotals() {
+    const totals = new Map<string, number>();
+    
+    this.dataSource.data.forEach(crew => {
+      if (!crew.currency) return;
+      
+      const totalIncome = this.calculateTotalIncomeAsNumber(crew);
+      if (totalIncome !== null) {
+        const currentTotal = totals.get(crew.currency) || 0;
+        totals.set(crew.currency, currentTotal + totalIncome);
+      }
+    });
+
+    this.currencyTotals = Array.from(totals.entries()).map(([currency, total]) => ({
+      currency,
+      total: Math.round(total * 100) / 100
+    }));
+  }
+
+  calculateTotalIncome(element: ICrewItem): string {
+    const total = this.calculateTotalIncomeAsNumber(element);
+    return total !== null ? total.toString() : '';
+  }
+
+  private calculateTotalIncomeAsNumber(element: ICrewItem): number | null {
+    if (!element.dailyRate || !element.daysOnBoard) return null;
+    
+    const baseTotal = element.dailyRate * element.daysOnBoard;
+    if (!element.discount) return baseTotal;
+    
+    const discountAmount = (baseTotal * element.discount) / 100;
+    return baseTotal - discountAmount;
   }
 
   addCrewClicked() {
@@ -132,14 +173,6 @@ export class CrewListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  calculateTotalIncome(element: ICrewItem): string {
-    if (!element.dailyRate || !element.daysOnBoard) return '';
-    const baseTotal = element.dailyRate * element.daysOnBoard;
-    if (!element.discount) return baseTotal.toString();
-    const discountAmount = (baseTotal * element.discount) / 100;
-    return (baseTotal - discountAmount).toString();
-  }
-
   onDiscountChange(value: number, element: ICrewItem) {
     let discount = Number(value);
     
@@ -156,7 +189,16 @@ export class CrewListComponent implements OnInit, AfterViewInit {
         ...element,
         discount: discount
       };
+
       this.crewService.updateCrew(updatedCrew);
+
+      const index = this.dataSource.data.findIndex(crew => crew.position === element.position);
+      if (index !== -1) {
+        this.dataSource.data[index] = updatedCrew;
+        this.dataSource.data = [...this.dataSource.data];
+      }
+
+      this.calculateCurrencyTotals();
     }
   }
 }

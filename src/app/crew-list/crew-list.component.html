@@ -101,6 +101,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
+      <div class="income-summary">
+        <div *ngFor="let summary of currencyTotals" class="income-item">
+          <strong>{{ summary.currency }}:</strong> {{ summary.total }}
+        </div>
+      </div>
+
       <mat-paginator
         [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
