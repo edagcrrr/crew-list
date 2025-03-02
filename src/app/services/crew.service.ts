@@ -14,8 +14,8 @@ export class CrewService {
         position: 1,
         name: 'John',
         lastName: 'Smith',
-        nationality: 'British',
-        title: 'Captain',
+        nationality: 'NATIONALITIES.BRITISH',
+        title: 'TITLES.MASTER_CAPTAIN',
         daysOnBoard: 180,
         dailyRate: 250,
         currency: 'USD',
@@ -25,8 +25,8 @@ export class CrewService {
         position: 2,
         name: 'Maria',
         lastName: 'Garcia',
-        nationality: 'Spanish',
-        title: 'Chief Officer',
+        nationality: 'NATIONALITIES.SPANISH',
+        title: 'TITLES.CHIEF_OFFICER',
         daysOnBoard: 150,
         dailyRate: 200,
         currency: 'EUR',
@@ -36,8 +36,8 @@ export class CrewService {
         position: 3,
         name: 'Yuki',
         lastName: 'Tanaka',
-        nationality: 'Japanese',
-        title: 'Chief Engineer',
+        nationality: 'NATIONALITIES.JAPANESE',
+        title: 'TITLES.CHIEF_ENGINEER',
         daysOnBoard: 160,
         dailyRate: 220,
         currency: 'USD',
@@ -47,8 +47,8 @@ export class CrewService {
         position: 4,
         name: 'Andreas',
         lastName: 'Müller',
-        nationality: 'German',
-        title: 'Second Officer',
+        nationality: 'NATIONALITIES.GERMAN',
+        title: 'TITLES.SECOND_OFFICER',
         daysOnBoard: 140,
         dailyRate: 180,
         currency: 'EUR',
@@ -58,8 +58,8 @@ export class CrewService {
         position: 5,
         name: 'Elena',
         lastName: 'Popov',
-        nationality: 'Russian',
-        title: 'Second Engineer',
+        nationality: 'NATIONALITIES.RUSSIAN',
+        title: 'TITLES.SECOND_ENGINEER',
         daysOnBoard: 145,
         dailyRate: 190,
         currency: 'USD',
@@ -69,8 +69,8 @@ export class CrewService {
         position: 6,
         name: 'Marco',
         lastName: 'Rossi',
-        nationality: 'Italian',
-        title: 'Third Officer',
+        nationality: 'NATIONALITIES.ITALIAN',
+        title: 'TITLES.THIRD_OFFICER',
         daysOnBoard: 130,
         dailyRate: 170,
         currency: 'EUR',
@@ -80,8 +80,8 @@ export class CrewService {
         position: 7,
         name: 'Sophie',
         lastName: 'Laurent',
-        nationality: 'French',
-        title: 'Deck Cadet',
+        nationality: 'NATIONALITIES.FRENCH',
+        title: 'TITLES.DECK_CADET',
         daysOnBoard: 120,
         dailyRate: 100,
         currency: 'EUR',
@@ -132,5 +132,51 @@ export class CrewService {
 
   getCrewByPosition(position: number): ICrewItem | undefined {
     return this.crewList.value.find(crew => crew.position === position);
+  }
+
+  getTitles(): string[] {
+    return [
+      'TITLES.MASTER_CAPTAIN',
+      'TITLES.CHIEF_OFFICER',
+      'TITLES.SECOND_OFFICER',
+      'TITLES.THIRD_OFFICER',
+      'TITLES.CHIEF_ENGINEER',
+      'TITLES.SECOND_ENGINEER',
+      'TITLES.THIRD_ENGINEER',
+      'TITLES.FOURTH_ENGINEER',
+      'TITLES.ELECTRICAL_ENGINEER',
+      'TITLES.DECK_CADET',
+      'TITLES.ENGINE_CADET',
+      'TITLES.BOSUN',
+      'TITLES.ABLE_SEAMAN',
+      'TITLES.ORDINARY_SEAMAN',
+      'TITLES.OILER',
+      'TITLES.WIPER',
+      'TITLES.COOK',
+      'TITLES.STEWARD'
+    ];
+  }
+
+  getNationalities(): string[] {
+    return [
+      'NATIONALITIES.BRITISH',
+      'NATIONALITIES.SPANISH',
+      'NATIONALITIES.JAPANESE',
+      'NATIONALITIES.GERMAN',
+      'NATIONALITIES.RUSSIAN',
+      'NATIONALITIES.ITALIAN',
+      'NATIONALITIES.FRENCH',
+      'NATIONALITIES.TURKISH',
+      'NATIONALITIES.GREEK',
+      'NATIONALITIES.DUTCH',
+      'NATIONALITIES.NORWEGIAN',
+      'NATIONALITIES.SWEDISH',
+      'NATIONALITIES.DANISH',
+      'NATIONALITIES.FINNISH',
+      'NATIONALITIES.PORTUGUESE',
+      'NATIONALITIES.AMERICAN',
+      'NATIONALITIES.CANADIAN',
+      'NATIONALITIES.AUSTRALIAN'
+    ];
   }
 } 

@@ -35,12 +35,12 @@
 
         <ng-container matColumnDef="nationality">
           <th mat-header-cell *matHeaderCellDef>{{ 'PERSONAL_INFO.NATIONALITY' | translate }}</th>
-          <td mat-cell *matCellDef="let element">{{ element.nationality }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.nationality | translate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef>{{ 'TABLE.TITLE' | translate }}</th>
-          <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.title | translate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="daysOnBoard">
@@ -80,7 +80,9 @@
           <td mat-cell *matCellDef="let element">
             <div class="example-button-row">
               <div class="example-flex-container">
-                <a mat-button (click)="certificatesClicked(element)">{{ 'TABS.CERTIFICATES' | translate }}</a>
+                <button mat-button (click)="certificatesClicked(element)">
+                  {{ 'TABS.CERTIFICATES' | translate }}
+                </button>
                 <button mat-icon-button (click)="userClicked(element.position)">
                   <mat-icon>person</mat-icon>
                 </button>

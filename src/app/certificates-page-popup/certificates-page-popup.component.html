@@ -1,5 +1,10 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.TITLE' | translate }}</h2>
+  <div class="dialog-header">
+    <h2 mat-dialog-title class="dialog-title">{{ 'CERTIFICATES.TITLE' | translate }}</h2>
+    <button mat-raised-button color="primary" (click)="onAddCertificate()">
+      {{ 'CERTIFICATES.ADD_TITLE' | translate }}
+    </button>
+  </div>
 
   <mat-dialog-content class="dialog-content">
     <div *ngIf="certificates?.length; else noCertificates" class="certificates-list">

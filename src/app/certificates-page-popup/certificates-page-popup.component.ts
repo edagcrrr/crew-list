@@ -1,12 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { ICertificate, ICrewItem } from '../types/crew-type';
+import { ICertificate } from '../types/crew-type';
 import { CertificateService } from '../services/certificate.service';
+import { CertificateAddPopupComponent } from '../certificate-add-popup/certificate-add-popup.component';
 
 @Component({
   selector: 'app-certificates-page-popup',
@@ -17,6 +19,7 @@ import { CertificateService } from '../services/certificate.service';
     MatButtonModule,
     MatCardModule,
     MatListModule,
+    MatIconModule,
     TranslateModule
   ],
   templateUrl: './certificates-page-popup.component.html',
@@ -27,13 +30,31 @@ export class CertificateComponentPopupComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CertificateComponentPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
-    private certificateService: CertificateService
+    @Inject(MAT_DIALOG_DATA) public data: { position: number },
+    private certificateService: CertificateService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.loadCertificates();
+  }
+
+  loadCertificates() {
     this.certificateService.getCertificatesByCrewId(this.data.position).subscribe(certs => {
       this.certificates = certs;
+    });
+  }
+
+  onAddCertificate(): void {
+    const dialogRef = this.dialog.open(CertificateAddPopupComponent, {
+      width: '600px',
+      data: { crewId: this.data.position }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCertificates();
+      }
     });
   }
 
@@ -42,6 +63,7 @@ export class CertificateComponentPopupComponent implements OnInit {
   }
 
   formatDate(date: string | Date): string {
+    if (!date) return '';
     return new Date(date).toLocaleDateString();
   }
 }

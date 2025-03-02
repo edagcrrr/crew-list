@@ -18,7 +18,9 @@
             </mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ "CERTIFICATES.ISSUE_DATE" | translate }}</mat-label>
@@ -26,7 +28,6 @@
               matInput
               [matDatepicker]="issuePicker"
               formControlName="issueDate"
-              placeholder="{{ 'CERTIFICATES.ISSUE_DATE' | translate }}"
             />
             <mat-datepicker-toggle matIconSuffix [for]="issuePicker"></mat-datepicker-toggle>
             <mat-datepicker #issuePicker></mat-datepicker>
@@ -35,9 +36,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="input-row">
         <div class="input-container">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ "CERTIFICATES.EXPIRY_DATE" | translate }}</mat-label>
@@ -45,7 +44,6 @@
               matInput
               [matDatepicker]="expiryPicker"
               formControlName="expiryDate"
-              placeholder="{{ 'CERTIFICATES.EXPIRY_DATE' | translate }}"
             />
             <mat-datepicker-toggle matIconSuffix [for]="expiryPicker"></mat-datepicker-toggle>
             <mat-datepicker #expiryPicker></mat-datepicker>

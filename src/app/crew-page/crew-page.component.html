@@ -19,11 +19,11 @@
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.NATIONALITY' | translate }}</mat-label>
-              <input matInput [value]="crewMember?.nationality || ''" disabled />
+              <input matInput [value]="(crewMember?.nationality || '') | translate" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.TITLE' | translate }}</mat-label>
-              <input matInput [value]="crewMember?.title || ''" disabled />
+              <input matInput [value]="(crewMember?.title || '') | translate" disabled />
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>{{ 'PERSONAL_INFO.DAYS_ON_BOARD' | translate }}</mat-label>

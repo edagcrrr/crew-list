@@ -39,21 +39,16 @@ th, td {
 }
 
 .discount-container {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .discount-input {
-  width: 45px;
-  height: 24px;
-  text-align: center;
-  font-size: inherit;
-  padding: 0 2px;
-  border: 1px solid #ddd;
+  width: 60px;
+  padding: 4px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: transparent;
-  transition: background-color 0.2s;
 }
 
 .discount-input:focus {
@@ -69,6 +64,34 @@ th, td {
 }
 
 .discount-suffix {
-  font-size: inherit;
   color: rgba(0, 0, 0, 0.6);
+}
+
+.example-button-row {
+  width: 100%;
+}
+
+.example-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.example-flex-container a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  padding: 0 8px;
+}
+
+.example-flex-container button {
+  flex-shrink: 0;
+}
+
+.mat-column-actions {
+  min-width: 240px;
+  max-width: 240px;
 }

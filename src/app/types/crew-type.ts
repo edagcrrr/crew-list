@@ -6,6 +6,7 @@ export interface ICertificateType {
 
 export interface ICertificate {
   id: number;
+  crewId: number;
   certificateType: ICertificateType;
   issueDate: Date;
   expiryDate: Date;

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatDialogRef,
   MatDialogModule,
+  MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -13,6 +14,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CertificateTypeService, ICertificateType } from '../services/certificate-type.service';
+import { CertificateService } from '../services/certificate.service';
+
+interface DialogData {
+  crewId: number;
+}
 
 @Component({
   selector: 'app-certificate-add-popup',
@@ -40,8 +46,10 @@ export class CertificateAddPopupComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CertificateAddPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: FormBuilder,
-    private certificateTypeService: CertificateTypeService
+    private certificateTypeService: CertificateTypeService,
+    private certificateService: CertificateService
   ) {
     this.form = this.fb.group({
       certificateType: ['', Validators.required],
@@ -57,8 +65,18 @@ export class CertificateAddPopupComponent implements OnInit {
   }
 
   onSave() {
-    if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+    if (this.form.valid && this.data && this.data.crewId) {
+      const formValue = this.form.value;
+      const newCertificate = {
+        id: Date.now(),
+        crewId: this.data.crewId,
+        certificateType: formValue.certificateType,
+        issueDate: formValue.issueDate,
+        expiryDate: formValue.expiryDate
+      };
+      
+      this.certificateService.addCertificate(newCertificate);
+      this.dialogRef.close(true);
     }
   }
 

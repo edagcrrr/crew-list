@@ -33,7 +33,9 @@
     "CANCEL": "Annuler",
     "CLOSE": "Fermer",
     "ADD_CREW": "Ajouter un Membre d'Équipage",
-    "CREATE_CERTIFICATE": "Créer un Type de Certificat"
+    "CREATE_CERTIFICATE": "Créer un Type de Certificat",
+    "DELETE": "Supprimer",
+    "EDIT": "Modifier"
   },
   "TABLE": {
     "NO": "N°",
@@ -70,5 +72,45 @@
     "REQUIRED": "Ce champ est obligatoire",
     "MIN_LENGTH_3": "Doit contenir au moins 3 caractères",
     "MIN_LENGTH_10": "Doit contenir au moins 10 caractères"
+  },
+  "TITLES": {
+    "MASTER_CAPTAIN": "Capitaine",
+    "CHIEF_OFFICER": "Premier Officier",
+    "SECOND_OFFICER": "Second Officier",
+    "THIRD_OFFICER": "Troisième Officier",
+    "CHIEF_ENGINEER": "Chef Mécanicien",
+    "SECOND_ENGINEER": "Second Mécanicien",
+    "THIRD_ENGINEER": "Troisième Mécanicien",
+    "FOURTH_ENGINEER": "Quatrième Mécanicien",
+    "ELECTRICAL_ENGINEER": "Ingénieur Électricien",
+    "DECK_CADET": "Cadet Pont",
+    "ENGINE_CADET": "Cadet Machine",
+    "BOSUN": "Maître d'Équipage",
+    "ABLE_SEAMAN": "Matelot Qualifié (AB)",
+    "ORDINARY_SEAMAN": "Matelot (OS)",
+    "OILER": "Graisseur",
+    "WIPER": "Nettoyeur",
+    "COOK": "Cuisinier",
+    "STEWARD": "Steward"
+  },
+  "NATIONALITIES": {
+    "BRITISH": "Britannique",
+    "SPANISH": "Espagnol",
+    "JAPANESE": "Japonais",
+    "GERMAN": "Allemand",
+    "RUSSIAN": "Russe",
+    "ITALIAN": "Italien",
+    "FRENCH": "Français",
+    "TURKISH": "Turc",
+    "GREEK": "Grec",
+    "DUTCH": "Néerlandais",
+    "NORWEGIAN": "Norvégien",
+    "SWEDISH": "Suédois",
+    "DANISH": "Danois",
+    "FINNISH": "Finlandais",
+    "PORTUGUESE": "Portugais",
+    "AMERICAN": "Américain",
+    "CANADIAN": "Canadien",
+    "AUSTRALIAN": "Australien"
   }
 } 

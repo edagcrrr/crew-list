@@ -35,6 +35,8 @@ import { CrewService } from '../services/crew.service';
 export class CrewPopupComponent {
   form: FormGroup;
   isEditMode: boolean;
+  nationalities: string[];
+  titles: string[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ICrewItem,
@@ -44,6 +46,8 @@ export class CrewPopupComponent {
     private crewService: CrewService
   ) {
     this.isEditMode = !!data.position;
+    this.nationalities = this.crewService.getNationalities();
+    this.titles = this.crewService.getTitles();
     this.form = this.fb.group({
       name: [data.name || ''],
       lastName: [data.lastName || ''],
@@ -85,6 +89,9 @@ export class CrewPopupComponent {
   }
 
   onCertificatesOpen() {
-    this.dialog.open(CertificateAddPopupComponent);
+    this.dialog.open(CertificateAddPopupComponent, {
+      width: '600px',
+      data: { crewId: this.data.position }
+    });
   }
 }

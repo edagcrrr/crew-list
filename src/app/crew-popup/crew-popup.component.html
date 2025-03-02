@@ -24,10 +24,9 @@
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ 'PERSONAL_INFO.NATIONALITY' | translate }}</mat-label>
             <mat-select [formControlName]="'nationality'">
-              <mat-option value="Turkish">{{ 'NATIONALITY_OPTIONS.TURKISH' | translate }}</mat-option>
-              <mat-option value="Greek">{{ 'NATIONALITY_OPTIONS.GREEK' | translate }}</mat-option>
-              <mat-option value="British">{{ 'NATIONALITY_OPTIONS.BRITISH' | translate }}</mat-option>
-              <mat-option value="Egyptian">{{ 'NATIONALITY_OPTIONS.EGYPTIAN' | translate }}</mat-option>
+              <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
+                {{ nationality | translate }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -36,9 +35,9 @@
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>{{ 'TABLE.TITLE' | translate }}</mat-label>
             <mat-select [formControlName]="'title'">
-              <mat-option value="Captain">{{ 'TITLE_OPTIONS.CAPTAIN' | translate }}</mat-option>
-              <mat-option value="2. Captain">{{ 'TITLE_OPTIONS.SECOND_CAPTAIN' | translate }}</mat-option>
-              <mat-option value="Crew">{{ 'TITLE_OPTIONS.CREW' | translate }}</mat-option>
+              <mat-option *ngFor="let title of titles" [value]="title">
+                {{ title | translate }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
